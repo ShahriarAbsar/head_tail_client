@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Add this line to prevent scrolling */
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.message h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.computer,
+.player {
+  flex-basis: 45%;
+  text-align: center;
+}
+
+.computer img,
+.player img {
+  max-width: 100%;
+  height: auto;
+}
+
+.box {
+  text-align: center;
+}
+
+.points {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.score {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+}
+
+button[type="button"] {
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.winner {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+  @keyframes shakePlayer {
+    0% {
+      transform: rotate(20deg);
+    }
+    25% {
+      transform: rotate(-20deg);
+    }
+    50% {
+      transform: rotate(20deg);
+    }
+    75% {
+      transform: rotate(-20deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
