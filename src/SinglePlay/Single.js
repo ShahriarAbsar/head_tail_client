@@ -11,10 +11,6 @@ const HandCricket = () => {
 
   const handleOptionClick = (option) => {
     if (isPlayerPlaying) {
-      // If it's the player's turn
-      //const playerInput = parseInt(option);
-      //const computerInput = Math.floor(Math.random() * 6) + 1;
-      //const sum = playerInput + computerInput;
 
       // Update the player's image to the chosen option
       document
@@ -50,7 +46,7 @@ const HandCricket = () => {
         .setAttribute(
           "src",
           `./image/singlePlay/${computerChoice}Computer.png`
-        );
+        );  
 
       // Choose a random option for the player
       const playerChoice = Math.floor(Math.random() * 6) + 1;

@@ -1,0 +1,103 @@
+
+
+.gameContainer1 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    
+  
+    justify-content: center;
+    align-items: center;
+    column-count: 2;
+    column-gap: 100px;
+  }
+  
+  .str-chat__list {
+    background-color: rgba(194, 177, 247, 0.434);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 5px;
+    height: 15vh;
+    width: 38.5vh;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  
+  .str-chat__list ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .str-chat__list li {
+    list-style-type: none;
+    background-color: rgba(139, 185, 128, 0.526);
+    margin-top: 10px;
+    border-radius: 6px;
+    display: flex;
+    height: 13vh;
+    align-items: center;
+  }
+  
+  .str-chat__list .str-chat__message-simple-status {
+    display: none;
+  }
+  
+  .str-chat__list .str-chat__avatar {
+    display: none;
+  }
+  
+  .str-chat__message-text-inner {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .str-chat__message-data {
+    margin-bottom: 0px;
+  }
+  .str-chat__message-data span {
+    margin-left: 0px;
+  }
+  
+  .str-chat__message-data time {
+    margin-left: 5px;
+  }
+  
+  .str-chat__input-flat {
+    width: 39.4vh;
+    height: 12vh;
+  
+    background-color: rgba(194, 177, 247, 0.434);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  
+  .str-chat__input-flat-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+  }
+  
+  .str-chat__input-flat-wrapper textarea {
+    resize: none;
+    width: 333px;
+    height: 0px;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px black;
+    padding: 10px;
+    font-size: 15px;
+  }
+  
+  .str-chat__message-simple__actions {
+    width: 100%;
+    padding-left: 5px;
+    margin-top: 5px;
+  }
+ 
+  
+ 

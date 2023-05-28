@@ -4,7 +4,8 @@ import "../SinglePlay/single.css";
 import playerImage1 from "../images/Player.png";
 import playerImage2 from "../images/1Player1.png";
 import { useChannelStateContext, useChatContext } from "stream-chat-react";
-
+import { Window,MessageList,MessageInput,reactionHandlerWarning } from 'stream-chat-react';
+import "./Chat.css"
 const Board = () => {
   // State variables
   const [player1Score, setPlayer1Score] = useState(0); // Player 1's score
@@ -151,7 +152,15 @@ const Board = () => {
   }, [channel, client]);
 
   return (
-    <div className="container">
+    
+   
+  <>
+
+   
+    <section className="container">
+   
+
+    <div >
       <div>
         <div className="message">
           <label htmlFor="overs">Select Overs: </label>
@@ -202,7 +211,32 @@ const Board = () => {
           </button>
         </div>
       </div>
+      
+     </div>
+
+     </section>
+      
+    <section className="gameContainer1">
+
+        <div > 
+   
+    <Window>
+
+      <MessageList hideDeletedMessages
+       disableDateSeparator
+       closeReactionSelectorOnClick 
+        messageActions={["none"]
+        }/>
+      <MessageInput noFiles />
+
+    </Window>
     </div>
+      </section>
+      
+   
+</>
+
+    
   );
 };
 

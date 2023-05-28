@@ -2,6 +2,7 @@ import React ,{useState} from 'react'
 import Board from './Board';
 import "./game.css"
 
+
 function Game({channel}) {
 
 
@@ -17,10 +18,14 @@ function Game({channel}) {
     return <div>waiting for players to join...</div>
   }
   return (
-    <div>
-      <Board/>
-      
+    <>
+    <div className="gameContainer">
+      <Board  />
     </div>
+    
+    
+    </>
+    
   )
 }
 
