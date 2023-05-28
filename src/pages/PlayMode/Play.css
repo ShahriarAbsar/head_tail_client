@@ -1,3 +1,7 @@
+body{
+  overflow: hidden; 
+}
+
 .container {
   background-image: url("./images/HomePage.png");
   background-repeat: no-repeat;

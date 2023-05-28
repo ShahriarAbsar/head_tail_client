@@ -5,12 +5,14 @@ import "./joinGame.css"
 
 
 function JoinGame() {
+  
     const[rivalUsername,setRivalUsername]=useState("");
     const {client} =useChatContext();
     const [channel,setChannel]= useState(null);
 
 
     const createChannel = async ()=>{
+      
       const response =await client.queryUsers({name:{$eq:rivalUsername}});
         
       if (response.users.length === 0){
@@ -41,9 +43,12 @@ function JoinGame() {
       <div className='joinGame'><h2>Create Game</h2><input placeholder='username of rival...'
       onChange={(event)=>{
         setRivalUsername(event.target.value);
+        
       }}
+      
       />
       <button className='join' onClick={createChannel}>Join/start Game</button>
+      
       </div>
     )}
     </>
