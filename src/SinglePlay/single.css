@@ -2,6 +2,7 @@ body{
   overflow-x: hidden;
   overflow-y: hidden;
   overflow: hidden;
+  background-image: url("../images/HomePage.png");
 }
 .container {
   display: flex;

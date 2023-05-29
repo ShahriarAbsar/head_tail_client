@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import UtilModal from "../components/UtilModal";
 import "./single.css";
 import computerImage from "../images/Computer.png";
 import playerImage from "../images/Player.png";
@@ -7,10 +8,32 @@ const HandCricket = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [isPlayerPlaying, setIsPlayerPlaying] = useState(true);
-  const [winner, setWinner] = useState("");
+  const [show, setShow] = useState(false);
 
-  const handleOptionClick = (option) => {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (computerScore > totalScore) {
+      setMessage('Computer Won!')
+      setIsPlayerPlaying(true);
+      setShow(true);
+    }
+  }, [computerScore])
+
+  const handleClose = () => {
+    setShow(false);
+    setTotalScore(0);
+    setComputerScore(0);
+  }
+
+
+  function handleOptionClick (option) {
+
     if (isPlayerPlaying) {
+      // If it's the player's turn
+      //const playerInput = parseInt(option);
+      //const computerInput = Math.floor(Math.random() * 6) + 1;
+      //const sum = playerInput + computerInput;
 
       // Update the player's image to the chosen option
       document
@@ -30,14 +53,15 @@ const HandCricket = () => {
         );
 
       // Check if the player's option matches the computer's option
-      if (option === computerChoice.toString()) {
-        alert("You're out!");
-        setIsPlayerPlaying(false);
-        return;
-      }
-
-      // Update the player's total score and display it on the page
-      setTotalScore((prevScore) => prevScore + parseInt(option));
+      setTimeout(() => {
+        if (option === computerChoice.toString()) {
+          setIsPlayerPlaying(false);
+          alert("You're out!");
+        } else {
+          // Update the player's total score and display it on the page
+          setTotalScore((prevScore) => prevScore + parseInt(option));
+        }
+      }, 100);
     } else {
       // If it's the computer's turn
       const computerChoice = Math.floor(Math.random() * 6) + 1;
@@ -46,36 +70,29 @@ const HandCricket = () => {
         .setAttribute(
           "src",
           `./image/singlePlay/${computerChoice}Computer.png`
-        );  
+        );
 
       // Choose a random option for the player
-      const playerChoice = Math.floor(Math.random() * 6) + 1;
+      // const playerChoice = Math.floor(Math.random() * 6) + 1;
       document
         .querySelector(".player_img")
         .setAttribute(
           "src",
-          `./image/singlePlay/${playerChoice}Player.png`
+          `./image/singlePlay/${option}Player.png`
         );
 
       // Check if the computer's option matches the player's option
-      if (option === computerChoice.toString()) {
-        alert("Computer is out!");
-        setIsPlayerPlaying(true);
-        setComputerScore(0);
-        return;
-      }
+      setTimeout(() => {
+        if (option === computerChoice.toString()) {
+          setMessage('You won!')
+          setIsPlayerPlaying(true)
+          setShow(true)
+        } else {
+          setComputerScore((prevScore) => prevScore + computerChoice);
+        }
+      }, 200)
 
       // Update the computer's total score and display it on the page
-      setComputerScore((prevScore) => prevScore + computerChoice);
-    }
-
-    // Check if both players are out and determine the winner
-    if (!isPlayerPlaying) {
-      if (totalScore > computerScore) {
-        setWinner("Player wins!");
-      } else if (computerScore > totalScore) {
-        setWinner("Computer wins!");
-      }
     }
   };
 
@@ -134,8 +151,7 @@ const HandCricket = () => {
           </button>
         </div>
       </div>
-
-      <div className="winner">{winner}</div>
+      <UtilModal show={show} message={message} compScore={computerScore} playerScore={totalScore} handleClose={handleClose} />
     </div>
   );
 };

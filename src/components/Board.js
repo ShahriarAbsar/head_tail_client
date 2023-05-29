@@ -4,8 +4,13 @@ import "../SinglePlay/single.css";
 import playerImage1 from "../images/Player.png";
 import playerImage2 from "../images/1Player1.png";
 import { useChannelStateContext, useChatContext } from "stream-chat-react";
-import { Window,MessageList,MessageInput,reactionHandlerWarning } from 'stream-chat-react';
-import "./Chat.css"
+import {
+  Window,
+  MessageList,
+  MessageInput,
+  reactionHandlerWarning,
+} from "stream-chat-react";
+import "./Chat.css";
 const Board = () => {
   // State variables
   const [player1Score, setPlayer1Score] = useState(0); // Player 1's score
@@ -21,7 +26,12 @@ const Board = () => {
 
   useEffect(() => {
     // Check if both players have made their selections and the game can proceed
-    if (!isPlayer1Playing && !isPlayer2Playing && player1Option !== "" && player2Option !== "") {
+    if (
+      !isPlayer1Playing &&
+      !isPlayer2Playing &&
+      player1Option !== "" &&
+      player2Option !== ""
+    ) {
       if (player1Option === player2Option) {
         // Players' inputs match, game over
         alert("Both players' inputs match! Game over.");
@@ -130,8 +140,8 @@ const Board = () => {
             .querySelector(".player2_img")
             .setAttribute("src", `./images/${option}Player.png`);
 
-            setPlayer2Score((prevScore2) => prevScore2 + parseInt(option));
-            setPlayer2Option(option);
+          setPlayer2Score((prevScore2) => prevScore2 + parseInt(option));
+          setPlayer2Option(option);
 
           // Store player 2's option
           setPlayer2Option(option);
@@ -152,91 +162,114 @@ const Board = () => {
   }, [channel, client]);
 
   return (
-    
-   
-  <>
-
-   
-    <section className="container">
-   
-
-    <div >
-      <div>
-        <div className="message">
-          <label htmlFor="overs">Select Overs: </label>
-          <select id="overs" value={selectedOvers} onChange={handleOversChange}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            {/* Add more options if needed */}
-          </select>
-        </div>
-        <div className="images">
-          <div className="player1">
-            <img className="player1_img" src={playerImage1} alt="Player 1" />
-          </div>
-          <div className="player2">
-            <img className="player2_img" src={playerImage2} alt="Player 2" />
-          </div>
-        </div>
-        <div className="box">
-          <div className="points">
-            <div className="score">
-              Player 1 Score: <span className="player1Score">{player1Score}</span>
-              <br />
-              Player 2 Score: <span className="player2Score">{player2Score}</span>
-              <br />
-              Balls played: {currentOver}
+    <>
+      <section className="container">
+        <div>
+          <div>
+            <div className="message">
+              <label htmlFor="overs">Select Overs: </label>
+              <select
+                id="overs"
+                value={selectedOvers}
+                onChange={handleOversChange}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                {/* Add more options if needed */}
+              </select>
+            </div>
+            <div className="images">
+              <div className="player1">
+                <img
+                  className="player1_img"
+                  src={playerImage1}
+                  alt="Player 1"
+                />
+              </div>
+              <div className="player2">
+                <img
+                  className="player2_img"
+                  src={playerImage2}
+                  alt="Player 2"
+                />
+              </div>
+            </div>
+            <div className="box">
+              <div className="points">
+                <div className="score">
+                  Player 1 Score:{" "}
+                  <span className="player1Score">{player1Score}</span>
+                  <br />
+                  Player 2 Score:{" "}
+                  <span className="player2Score">{player2Score}</span>
+                  <br />
+                  Balls played: {currentOver}
+                </div>
+              </div>
+            </div>
+            <div className="options">
+              <button
+                className="bttn1"
+                type="button"
+                onClick={() => handleOptionClick("1")}
+              >
+                1
+              </button>
+              <button
+                className="bttn2"
+                type="button"
+                onClick={() => handleOptionClick("2")}
+              >
+                2
+              </button>
+              <button
+                className="bttn3"
+                type="button"
+                onClick={() => handleOptionClick("3")}
+              >
+                3
+              </button>
+              <button
+                className="bttn4"
+                type="button"
+                onClick={() => handleOptionClick("4")}
+              >
+                4
+              </button>
+              <button
+                className="bttn5"
+                type="button"
+                onClick={() => handleOptionClick("5")}
+              >
+                5
+              </button>
+              <button
+                className="bttn6"
+                type="button"
+                onClick={() => handleOptionClick("6")}
+              >
+                6
+              </button>
             </div>
           </div>
         </div>
-        <div className="options">
-          <button className="bttn1" type="button" onClick={() => handleOptionClick("1")}>
-            1
-          </button>
-          <button className="bttn2" type="button" onClick={() => handleOptionClick("2")}>
-            2
-          </button>
-          <button className="bttn3" type="button" onClick={() => handleOptionClick("3")}>
-            3
-          </button>
-          <button className="bttn4" type="button" onClick={() => handleOptionClick("4")}>
-            4
-          </button>
-          <button className="bttn5" type="button" onClick={() => handleOptionClick("5")}>
-            5
-          </button>
-          <button className="bttn6" type="button" onClick={() => handleOptionClick("6")}>
-            6
-          </button>
-        </div>
-      </div>
-      
-     </div>
-
-     </section>
-      
-    <section className="gameContainer1">
-
-        <div > 
-   
-    <Window>
-
-      <MessageList hideDeletedMessages
-       disableDateSeparator
-       closeReactionSelectorOnClick 
-        messageActions={["none"]
-        }/>
-      <MessageInput noFiles />
-
-    </Window>
-    </div>
       </section>
-      
-   
-</>
 
-    
+      <section className="gameContainer1">
+        <div>
+          <Window>
+            <MessageList
+              hideDeletedMessages
+              disableDateSeparator
+              closeReactionSelectorOnClick
+              messageActions={["none"]}
+            />
+            <MessageInput noFiles />
+          </Window>
+        </div>
+      </section>
+    </>
   );
 };
 
