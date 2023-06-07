@@ -84,9 +84,15 @@ const HandCricket = () => {
       // Check if the computer's option matches the player's option
       setTimeout(() => {
         if (option === computerChoice.toString()) {
-          setMessage('You won!')
-          setIsPlayerPlaying(true)
-          setShow(true)
+          if (computerScore === totalScore) {
+            setMessage('Match tie!')
+            setIsPlayerPlaying(true)
+            setShow(true)
+          } else {
+            setMessage('You won!')
+            setIsPlayerPlaying(true)
+            setShow(true)
+          }
         } else {
           setComputerScore((prevScore) => prevScore + computerChoice);
         }

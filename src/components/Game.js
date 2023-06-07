@@ -2,12 +2,14 @@ import React ,{useState} from 'react'
 import Board from './Board';
 import "./game.css"
 
+import io from "socket.io-client";
+
 
 function Game({channel}) {
+  const socket = io.connect("http://localhost:3002")
 
-
-  const [playersJoined, setPlayersJoined]=useState (
-    channel.state.watcher_count ===2
+  const [playersJoined, setPlayersJoined] = useState (
+    channel.state.watcher_count === 2
   );
 
   channel.on("user.watching.start", (event) => {
@@ -19,13 +21,10 @@ function Game({channel}) {
   }
   return (
     <>
-    <div className="gameContainer">
-      <Board  />
-    </div>
-    
-    
-    </>
-    
+      <div className="gameContainer">
+        <Board socket={socket} />
+      </div>
+    </>    
   )
 }
 
