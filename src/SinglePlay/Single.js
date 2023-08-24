@@ -14,7 +14,7 @@ const HandCricket = () => {
 
   useEffect(() => {
     if (computerScore > totalScore) {
-      setMessage('Computer Won!')
+      setMessage('India Won!')
       setIsPlayerPlaying(true);
       setShow(true);
     }
@@ -30,12 +30,6 @@ const HandCricket = () => {
   function handleOptionClick (option) {
 
     if (isPlayerPlaying) {
-      // If it's the player's turn
-      //const playerInput = parseInt(option);
-      //const computerInput = Math.floor(Math.random() * 6) + 1;
-      //const sum = playerInput + computerInput;
-
-      // Update the player's image to the chosen option
       document
         .querySelector(".player_img")
         .setAttribute(
@@ -89,7 +83,7 @@ const HandCricket = () => {
             setIsPlayerPlaying(true)
             setShow(true)
           } else {
-            setMessage('You won!')
+            setMessage('Bangladesh won!')
             setIsPlayerPlaying(true)
             setShow(true)
           }
@@ -104,18 +98,12 @@ const HandCricket = () => {
 
   return (
     <div className="container">
-      <div className="message">
-        <h1>Toss</h1>
-        <button onClick={handleOptionClick}>Toss</button>
-        <button onClick={() => handleOptionClick("Head")}>Head</button>
-        <button onClick={() => handleOptionClick("Tail")}>Tail</button>
-      </div>
 
-      <div>
-        <div className="message">
+      <div style={{marginTop: '15%'}}>
+        {/* <div className="message">
           <button type="button">Batting</button>
           <button type="button">Bowling</button>
-        </div>
+        </div> */}
         <div className="images">
           <div className="computer">
             <img
@@ -131,30 +119,20 @@ const HandCricket = () => {
         <div className="box">
           <div className="points">
             <div className="score">
-              Computer{" "}
-              <span className="computerPoints">{computerScore}</span> || Player{" "}
+              India{" "}
+              <span className="computerPoints">{computerScore}</span> || Bangladesh{" "}
               <span className="playerPoints">{totalScore}</span>
             </div>
           </div>
         </div>
+        <br />
         <div className="options">
-          <button className="bttn1" type="button" onClick={() => handleOptionClick("1")}>
-          </button>
-          <button className="bttn2" type="button" onClick={() => handleOptionClick("2")}>
-            2
-          </button>
-          <button className="bttn3" type="button" onClick={() => handleOptionClick("3")}>
-            3
-          </button>
-          <button className="bttn4" type="button" onClick={() => handleOptionClick("4")}>
-            4
-          </button>
-          <button className="bttn5" type="button" onClick={() => handleOptionClick("5")}>
-            5
-          </button>
-          <button className="bttn6" type="button" onClick={() => handleOptionClick("6")}>
-            6
-          </button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("1")}></button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("2")}></button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("3")}></button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("4")}></button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("5")}></button>
+          <button className="bttn" type="button" onClick={() => handleOptionClick("6")}></button>
         </div>
       </div>
       <UtilModal show={show} message={message} compScore={computerScore} playerScore={totalScore} handleClose={handleClose} />

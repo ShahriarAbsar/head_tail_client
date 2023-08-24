@@ -120,7 +120,3 @@ button {
 button:hover {
   background-color: #3771e600;
 }
-
-button:first-child {
-  margin-top: 20px;
-}

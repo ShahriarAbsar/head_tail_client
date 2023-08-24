@@ -5,8 +5,8 @@ function UtilModal({message, show, compScore, playerScore, handleClose}) {
     return (
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
-            <p>Player Score: {playerScore}</p>
-            <p>Computer Score: {compScore}</p>
+            <p>Bangladesh Score: {playerScore}</p>
+            <p>India (Computer) Score: {compScore}</p>
             <br />
             <h4>{message}</h4>
         </Modal.Body>
